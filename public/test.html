@@ -1,18 +1,26 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>static public test</title>
 </head>
 <body>
-	</h1>
-	DEMO STATIC CONTENT
-	</h1>
-	<form action="/animal">
-	<input type="text" name="name">
-	<input type="submit" value="search">
+	<h1>Static public folder stuff.</h1>
+	<hr>
+	<h2>Get all</h2>
+	<a href="./animals">Get all</a>
+	<hr>
+	<h2>Search</h2>
+	<form action="./animal" method="get">
+		<input type="text" name="name" placeholder="Enter name">
+		<input type="submit" value="Search">
+	</form>
+	<hr>
+	<h2>Insert</h2>
+	<form action="./animal" method="post">
+		<input type="text" name="name" placeholder="Enter name">
+		<input type="submit" value="Insert">
 	</form>
 </body>
 </html>
