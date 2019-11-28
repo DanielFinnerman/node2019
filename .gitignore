@@ -1,3 +1,6 @@
+ca.csr
+ca.key
+ca.crt
 # Logs
 logs
 *.log

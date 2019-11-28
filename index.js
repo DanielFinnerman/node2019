@@ -5,6 +5,16 @@ const connection = require('./model/animals')
 const app = express();
 const bodyParser = require('body-parser');
 const port = 3000;
+
+if(process.env.SERVER === 'dev_localhost') {
+	require('./secure/localhost')(app);
+	}else{
+		require('./secure/server')(app);
+	app.listen(port, () => {
+		console.log(`Listening from port ${port}`);
+	});
+}
+
 app.use(express.static('public'));
 
 app.get('/animals', async (req, res) => {
@@ -36,7 +46,11 @@ app.post('/animal', bodyParser.urlencoded({extended: true}), async (req, res) =>
 });
 
 app.get('/', (req, res) => {
-	res.send('Hello from Node server!');
+  if(req.secure) {
+    res.send('Hello secure');
+  } else {
+    res.send('Hello form my Node server unsecure');
+  }
 });
 
 app.get('/demo', (req, res) => {
@@ -45,6 +59,6 @@ app.get('/demo', (req, res) => {
 	res.send('Hallo from Demo server!');
 });
 
-app.listen(port, () => {
+/*app.listen(port, () => {
 	console.log(`Listening from port ${port}`);
-});
+});*/
